@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5 Video Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <div class="flex h-screen w-screen bg-red-900">
+        <div class="m-auto space-y-8">
+
+            <!-- Input Files Buttons -->
+            <div class="flex justify-between">
+                <label class="inline-block py-2 text-xl text-white bg-gray-800 px-7 hover:bg-gray-700 rounded-xl">
+                    Video File
+                    <input class="hidden" id="videofile" type="file" accept="video/*" />
+                </label>
+
+                <label class="inline-block py-2 text-xl text-white bg-gray-800 px-7 hover:bg-gray-700 rounded-xl">
+                    SRT File
+                    <input class="hidden" id="srtfile" type="file" accept=".vtt,.srt">
+                </label>
+            </div>
+
+            <!-- Video element -->
+            <div class="flex justify-center">
+                <video class="h-96" id="video" preload="metadata">
+                    <source type="video/mp4">
+                    <track id="subtitlesfile" src="/files/samplevtt.vtt" label="English" kind="subtitles" srclang="en"
+                        default>
+                </video>
+            </div>
+
+
+            <!-- Seek bar -->
+            <input class="appearance-none block w-full bg-black rounded-full outline-none slider-thumb" type="range"
+                step="any" id="seekbar" onchange="ChangeTheTime()">
+            <div class="flex justify-between">
+                <!-- <label class="text-white text-md " id="time-elapsed">-:--:--</label> -->
+                <time class="text-white text-md " id="time-elapsed">00:00</time>
+                <time class="text-white text-md " id="duration">00:00</time>
+                <!-- <label class="text-white text-md " id="duration">-:--:--</label> -->
+            </div>
+
+            <div class="flex justify-center justify-between">
+
+                <!-- Backward ---Play/Pause---Forward Buttons  -->
+                <button onclick="backward()"
+                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-800 focus:shadow-outline focus:outline-none">
+                    Backward
+                </button>
+
+                <button id="playPauseButton" onclick="playPauseVideo()" type="button"
+                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-800 focus:shadow-outline focus:outline-none">
+                    Play
+                </button>
+
+                <button onclick="forward()"
+                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-800 focus:shadow-outline focus:outline-none">
+                    Forward
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <script src="/index.js"></script>
+</body>
+</html>
